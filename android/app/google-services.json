@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "55075832278",
+    "project_id": "treinamento-olimpiadas",
+    "storage_bucket": "treinamento-olimpiadas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:55075832278:android:0e9843f1cafe0c7cada477",
+        "android_client_info": {
+          "package_name": "com.example.firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZU6mJ3TPe2G2DhChnNRpvW9yhU7QTREQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

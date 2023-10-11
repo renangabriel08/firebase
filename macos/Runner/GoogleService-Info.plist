@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyDZ39-piXHgl3RIAvDKZB9Q8GYckM_odT0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>55075832278</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.firebase.RunnerTests</string>
+	<key>PROJECT_ID</key>
+	<string>treinamento-olimpiadas</string>
+	<key>STORAGE_BUCKET</key>
+	<string>treinamento-olimpiadas.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:55075832278:ios:6e9129f7cd3c1bf3ada477</string>
+</dict>
+</plist>
