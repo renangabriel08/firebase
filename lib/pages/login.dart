@@ -15,6 +15,21 @@ class _LoginState extends State<Login> {
   String email = '';
   String senha = '';
 
+  bool senhaOculta = true;
+  IconData icone = Icons.visibility;
+
+  void mostrarEsconderSenha() {
+    setState(() {
+      if (senhaOculta) {
+        senhaOculta = false;
+        icone = Icons.visibility_off;
+      } else {
+        senhaOculta = true;
+        icone = Icons.visibility;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -52,9 +67,17 @@ class _LoginState extends State<Login> {
                       TextFormField(
                         validator: (value) => Validator.validarDados(senha),
                         onChanged: (value) => senha = value,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          label: Text('Senha'),
+                        obscureText: senhaOculta,
+                        decoration: InputDecoration(
+                          border: const OutlineInputBorder(),
+                          label: const Text('Senha'),
+                          suffixIcon: IconButton(
+                            onPressed: () => mostrarEsconderSenha(),
+                            icon: Icon(
+                              icone,
+                              color: Colors.deepPurple,
+                            ),
+                          ),
                         ),
                       ),
                     ],
@@ -68,12 +91,22 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     onPressed: () async {
-                      LoginController.logar(email, senha, context);
+                      LoginController.logarEmail(email, senha, context);
                     },
                     child: const Text(
                       'Entrar',
                       style: TextStyle(fontSize: 20),
                     ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      TextButton(
+                        onPressed: () =>
+                            Navigator.pushNamed(context, '/cadastro'),
+                        child: const Text('Criar conta'),
+                      ),
+                    ],
                   ),
                 ],
               ),

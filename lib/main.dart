@@ -1,4 +1,5 @@
 import 'package:firebase/options/firebase_options.dart';
+import 'package:firebase/pages/cadastro.dart';
 import 'package:firebase/pages/checagem.dart';
 import 'package:firebase/pages/home.dart';
 import 'package:firebase/pages/login.dart';
@@ -25,9 +26,10 @@ class MyApp extends StatelessWidget {
       routes: {
         '/home': (context) => const Home(),
         '/checagem': (context) => const Checagem(),
-        '/login': (context) => const Login()  
+        '/login': (context) => const Login(),
+        '/cadastro': (context) => const Cadastro(),
       },
-      initialRoute: '/checagem',
+      initialRoute: '/login',
     );
   }
 }
