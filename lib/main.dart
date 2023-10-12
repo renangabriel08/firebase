@@ -1,3 +1,4 @@
+import 'package:firebase/controllers/push_notification.dart';
 import 'package:firebase/options/firebase_options.dart';
 import 'package:firebase/pages/cadastro.dart';
 import 'package:firebase/pages/checagem.dart';
@@ -9,6 +10,7 @@ import 'package:flutter/material.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await PushNotificaton.getToken();
   runApp(const MyApp());
 }
 

@@ -1,5 +1,7 @@
 import 'package:firebase/controllers/login.dart';
 import 'package:firebase/controllers/validator.dart';
+import 'package:firebase/widgets/icone_btn.dart';
+import 'package:firebase/widgets/linha.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -80,6 +82,40 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                       ),
+                    ],
+                  ),
+                  SizedBox(height: height * .05),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Linha(),
+                      Text(
+                        'Entrar com',
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.deepPurple,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      Linha(),
+                    ],
+                  ),
+                  SizedBox(height: height * .02),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      GestureDetector(
+                        onTap: () => LoginController.logarGoogle(),
+                        child: const IconeBtn(icone: Icons.email_outlined),
+                      ),
+                      GestureDetector(
+                        onTap: () => LoginController.logarFacebook(),
+                        child: const IconeBtn(icone: Icons.facebook),
+                      ),
+                      GestureDetector(
+                        onTap: () {},
+                        child: const IconeBtn(icone: Icons.email_outlined),
+                      )
                     ],
                   ),
                   SizedBox(height: height * .05),
