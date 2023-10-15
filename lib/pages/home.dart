@@ -1,5 +1,8 @@
+import 'dart:io';
 import 'package:firebase/controllers/logout.dart';
+import 'package:firebase/controllers/upload.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -9,16 +12,26 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _counter = 0;
+  var image;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  void tirarFoto(ImageSource source) async {
+    try {
+      var imgTirada = await ImagePicker().pickImage(source: source);
+      setState(() {
+        if (imgTirada != null) {
+          image = File(imgTirada.path);
+        }
+      });
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -31,24 +44,70 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                width: 200,
+                height: 200,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    color: Colors.deepPurple,
+                    width: 4,
+                  ),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.deepPurple,
+                      blurRadius: 5,
+                    )
+                  ],
+                ),
+                child: image != null
+                    ? ClipRRect(
+                        borderRadius: BorderRadius.circular(6),
+                        child: Image.file(
+                          image,
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                    : null,
+              ),
+              SizedBox(height: height * .02),
+              ElevatedButton.icon(
+                onPressed: () => tirarFoto(ImageSource.camera),
+                icon: const Icon(Icons.camera_alt_outlined),
+                label: const Text('Tirar foto'),
+                style: ElevatedButton.styleFrom(
+                  fixedSize: Size(width, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ),
+              SizedBox(height: height * .01),
+              ElevatedButton.icon(
+                onPressed: () => tirarFoto(ImageSource.gallery),
+                icon: const Icon(Icons.upload_file),
+                label: const Text('Upload de foto'),
+                style: ElevatedButton.styleFrom(
+                  fixedSize: Size(width, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        onPressed: () => Upload.uploadImage(image),
+        child: const Icon(Icons.save),
       ),
     );
   }

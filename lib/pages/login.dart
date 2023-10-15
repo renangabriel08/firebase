@@ -1,3 +1,4 @@
+import 'package:firebase/controllers/cadastro.dart';
 import 'package:firebase/controllers/login.dart';
 import 'package:firebase/controllers/validator.dart';
 import 'package:firebase/widgets/icone_btn.dart';
@@ -113,8 +114,8 @@ class _LoginState extends State<Login> {
                         child: const IconeBtn(icone: Icons.facebook),
                       ),
                       GestureDetector(
-                        onTap: () {},
-                        child: const IconeBtn(icone: Icons.email_outlined),
+                        onTap: () => CadastroController.cadastrarTelefone(),
+                        child: const IconeBtn(icone: Icons.call),
                       )
                     ],
                   ),

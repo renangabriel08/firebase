@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 class CadastroController {
   static cadastrarEmail(nome, String email, String senha, context) async {
     try {
-      final _firebaseAuth = FirebaseAuth.instance;
+      final firebaseAuth = FirebaseAuth.instance;
 
-      await _firebaseAuth
+      await firebaseAuth
           .createUserWithEmailAndPassword(
         email: email,
         password: senha,
@@ -27,6 +27,20 @@ class CadastroController {
       }
 
       print(e.code);
+    }
+  }
+
+  static cadastrarTelefone() async {
+    try {
+      await FirebaseAuth.instance.verifyPhoneNumber(
+        phoneNumber: '+55014998297799',
+        verificationCompleted: (PhoneAuthCredential credential) {},
+        verificationFailed: (FirebaseAuthException e) {},
+        codeSent: (String verificationId, int? resendToken) {},
+        codeAutoRetrievalTimeout: (String verificationId) {},
+      );
+    } catch (e) {
+      print(e);
     }
   }
 }

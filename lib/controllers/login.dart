@@ -47,4 +47,6 @@ class LoginController {
 
     return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
   }
+
+  static logarTelefone() async {}
 }

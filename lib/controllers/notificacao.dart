@@ -1,6 +1,6 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 
-class PushNotificaton {
+class Notificacao {
   static FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
 
   static getToken() async {
